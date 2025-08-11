@@ -1,0 +1,54 @@
+" ================ pluggins ================ "
+if empty(glob('~/.config/vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+call plug#begin()
+
+Plug 'challenger-deep-theme/vim', { 'as': 'challenger-deep' }
+Plug 'jiangmiao/auto-pairs'
+Plug '907th/vim-auto-save'
+
+call plug#end()
+" ================ settings ================ "
+set shiftwidth=4 smarttab
+set expandtab
+set tabstop=8 softtabstop=0
+set shiftwidth=4
+
+set ttimeoutlen=10          
+let &t_SI.="\e[5 q"
+let &t_SR.="\e[3 q"
+let &t_EI.="\e[1 q"
+
+let g:auto_save = 1
+let g:auto_save_silent = 1
+let g:auto_save_events = ["InsertLeave", "TextChanged"]
+
+color challenger_deep
+"set autowriteall
+set wrap linebreak nolist   
+set number relativenumber
+set nocompatible
+set cursorline
+set mouse=a
+set termguicolors
+set termwinkey=None
+set viminfo='50,<1000,s100,:0,n~/.config/vim/viminfo
+set autochdir
+
+set noautoindent
+set nosmartindent
+set nocindent
+" Автоподстановка shell like
+set wildmode=longest:list
+" Чтение man в vim
+runtime! ftplugin/man.vim   
+" ================ keymapping ================ "
+nnoremap Y y$
+vnoremap Y $y
+inoremap jk <ESC>
+nnoremap <Tab> gt
+nnoremap <S-Tab> gT
+tnoremap <ESC> <C-\><C-n>
