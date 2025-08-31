@@ -1,0 +1,48 @@
+super + shift + Return
+    alacritty
+
+super + p
+    dmenu_run -fn 'JetBrainsMono:size=10'
+
+super + shift + c
+    xdotool keyup c ; bspc node -c
+
+super + s
+    mkdir -p ~/pictures/screenshots/ && \
+    scrot ~/pictures/screenshots/%Y-%m-%d-screenshot.jpg \
+        --format jpg -fs -l color=blue,style=dash,width=2 \
+        -e 'xclip -selection clipboard $F'
+
+super + {_,shift + }{h,j,k,l}
+    bspc node -{f,s} {west,south,north,east}
+
+super + r
+    pkill -USR1 -x sxhkd; bspc wm -r
+
+super + {_, shift + }o
+    bspc node -{f,s} biggest.local
+
+super + Tab
+    bspc desktop -f last
+
+super + {1-9}
+    bspc desktop -f '^{1-9}'
+
+super + shift + {1-9}
+    bspc node -d '^{1-9}'
+
+super + alt + {h,j,k,l}
+    {bspc node @parent/second -z left -20 0; \
+    bspc node @parent/first -z right -20 0, \
+    bspc node @parent/second -z top 0 +20; \
+    bspc node @parent/first -z bottom 0 +20, \
+    bspc node @parent/first -z bottom 0 -20; \
+    bspc node @parent/second -z top 0 -20, \
+    bspc node @parent/first -z right +20 0; \
+    bspc node @parent/second -z left +20 0}
+
+super + shift + q
+    pkill -TERM -u $USER
+
+super + m
+    bspc desktop -l next
