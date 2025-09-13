@@ -41,9 +41,7 @@ set autochdir
 set noautoindent
 set nosmartindent
 set nocindent
-" Автоподстановка shell like
-set wildmode=longest:list
-" Чтение man в vim
+set wildmode=longest:list " shell like copletion
 runtime! ftplugin/man.vim   
 " ================ keymapping ================ "
 nnoremap Y y$
@@ -52,3 +50,5 @@ inoremap jk <ESC>
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 tnoremap <ESC> <C-\><C-n>
+nnoremap <C-n> :bn<CR>
+nnoremap <C-p> :bp<CR>
